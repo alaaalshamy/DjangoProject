@@ -9,7 +9,10 @@ from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
- 
+
+
+#Hossam Login & Register
+
 @csrf_protect
 def register(request):
     if request.method == 'POST':
@@ -28,6 +31,7 @@ def register(request):
     context ={
         'form': form
     }
+
 
     return render_to_response(
     'registration/register.html',
