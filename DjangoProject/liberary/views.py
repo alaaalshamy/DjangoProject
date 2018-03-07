@@ -49,9 +49,25 @@ def logout_page(request):
     return HttpResponseRedirect('registration/logout.html')
 
  
+ 
 @login_required
 def home(request):
-    return render_to_response(
-    'home.html',
-    { 'user': request.user }
-    )
+    if request.user.is_authenticated:
+        return render(request, 'home.html', {'user': request.user})
+    else:
+        return render(request, 'login.html', {})
+
+"""
+#sessionLogin
+ username = request.session['username']
+
+        return render_to_response(
+            'home.html',
+            {'user': request.user}
+        )
+        
+     if request.session.has_key('username'):
+        return render(request, 'home.html',{'user': request.user})
+    else:
+        return render(request, 'login.html', {})
+"""
