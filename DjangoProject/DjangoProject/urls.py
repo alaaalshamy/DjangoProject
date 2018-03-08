@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from liberary import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index', views.index, name='index'),
+    path('liberary/<int:pk>',views.Writer_view),
+    path('liberary/', views.index,name='index'),
 ]
